@@ -1,3 +1,4 @@
+"use strict";
 function about_touch(){
 	let accelerometer = null;
 	try {
