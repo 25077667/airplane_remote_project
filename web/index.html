@@ -11,7 +11,7 @@
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
-
+  <script src="js/main.js" charset="utf-8" type="text/javascript"></script>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
 
@@ -31,11 +31,36 @@
   <![endif]-->
   <font face=NotoSansMonoCJKtc-Bold.otf>
   <!-- Add your site or application content here -->
+  <form>
+    <select device="YourAirplaneIP">
+      <option value="192.168.200.1">192.168.200.1</option>
+      <option value="192.168.200.2">192.168.200.2</option>
+      <option value="192.168.200.3">192.168.200.3</option>
+      <option value="192.168.200.4">192.168.200.4</option>
+      <option value="192.168.200.5">192.168.200.5</option>
+      <option value="192.168.200.6">192.168.200.6</option>
+      <option value="192.168.200.7">192.168.200.7</option>
+      <option value="192.168.200.8">192.168.200.8</option>
+      <option value="192.168.200.9">192.168.200.9</option>
+      <option value="192.168.200.10">192.168.200.10</option>
+      <option value="192.168.200.11">192.168.200.11</option>
+      <option value="192.168.200.12">192.168.200.12</option>
+      <option value="192.168.200.13">192.168.200.13</option>
+      <option value="192.168.200.14">192.168.200.14</option>
+      <option value="192.168.200.15">192.168.200.15</option>
+      <option value="192.168.200.16">192.168.200.16</option>
+      <option value="192.168.200.17">192.168.200.17</option>
+      <option value="192.168.200.18">192.168.200.18</option>
+      <option value="192.168.200.19">192.168.200.19</option>
+      <option value="192.168.200.20">192.168.200.20</option>
+    </select>
+  </form>
 
 <!-- Footer -->
 
   <footer id="Footer">
-    <button class="btn default">強制穩定</button>
+    <button class="btn default" onclick="static_flag_ctrl()">強制穩定</button>
+    <button class="btn set_up" onclick="set_up()"><b>初始設定</b></button>
   </footer>
 
 <!-- Scripts -->
@@ -47,6 +72,7 @@
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script>
+
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
     ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
   </script>
