@@ -64,7 +64,15 @@ function calculating(dx_axis, dy_axis, dz_axis, static_flag){
 		dx_axis = acceleration.x - x_axis;
 		dy_axis = acceleration.y - y_axis;
 		dz_axis = acceleration.z - z_axis;
-		
+		motor_power = touchmove(); //目前尚未宣告touchmove
+		//自己拿手機起來測試啦
+		//手機頭上揚是y軸增加
+		//手機左翻是x軸增加
+		//當螢幕朝上，平放手機後，每旋轉90，270之同界角，z軸加速度都是0
+		//因為加速度是-9.8~9.8之間，我直接取三次方，就可以達到平衡點附近變動小的狀況
+		//因此max取1000，min取-1000，1000為完全直立
+
+		return Math.pow(dx_axis, 3) + " " + Math.pow(dy_axis, 3) + " " + Math.pow(dz_axis, 3) + " " + motor_power + " ";
 	}
 
 	else{
@@ -77,5 +85,5 @@ function calculating(dx_axis, dy_axis, dz_axis, static_flag){
 }
 
 function send_something(){
-
+	
 }
