@@ -1,5 +1,7 @@
 //"use strict";
 
+var Sensor = new RelativeOrientationSensor();
+
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function about_touch(){
@@ -85,5 +87,5 @@ function calculating(dx_axis, dy_axis, dz_axis, static_flag){
 }
 
 function send_something(){
-	
+
 }
