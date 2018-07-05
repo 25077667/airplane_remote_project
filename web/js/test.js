@@ -4,7 +4,7 @@ $(document).ready(function() {
 	$('.YourAirplaneIP').change(function() {
 		app.connect()
 		var IPAddress = $('#YourAirplaneIP').val()
-		alert(IPAddress)
+		console.log(IPAddress)
 	})
 
 	$('#led').click(function(){
