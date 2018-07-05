@@ -2,8 +2,8 @@
 $(document).ready(function() {
 
 	$('.YourAirplaneIP').change(function() {
-		app.connect()
 		var IPAddress = $('#YourAirplaneIP').val()
+		app.connect()
 		console.log(IPAddress)
 	})
 
