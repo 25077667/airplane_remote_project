@@ -1,6 +1,6 @@
 //"use strict";
 
-var Sensor = new RelativeOrientationSensor();
+var sensor = new Accelerometer();
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -39,7 +39,7 @@ function onDeviceReady(){
 
 //誰給acceleration??
 function set_up(acceleration){
-	//陀螺離重設
+	//加速度重設
 	x_axis = acceleration.x;
 	y_axis = acceleration.y;
 	z_axis = acceleration.z;
