@@ -3,7 +3,7 @@ $(document).ready(function() {
 
 	$('.YourAirplaneIP').change(function() {
 		var IPAddress = $('#YourAirplaneIP').val()
-		app.connect()
+		app.connect(IPAdress)
 		console.log(IPAddress)
 	})
 
@@ -17,9 +17,7 @@ var app = {}
 app.PORT = 1337
 app.socketId
 
-app.connect = function() {
-
-	var IPAddress = $('#YourAirplaneIP').val()
+app.connect = function(IPAdress) {
 
 	console.log('Trying to connect to ' + IPAddress)
 
