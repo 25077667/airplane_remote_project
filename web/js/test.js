@@ -2,8 +2,8 @@
 $(document).ready(function() {
 
 	$('.YourAirplaneIP').change(function() {
-		var IPAddress = $('#YourAirplaneIP').val()
-		app.connect(IPAdress)
+		var IPAddress = $('.YourAirplaneIP').val()
+		app.connect()
 		console.log(IPAddress)
 	})
 
@@ -17,15 +17,20 @@ var app = {}
 app.PORT = 1337
 app.socketId
 
-app.connect = function(IPAdress) {
+app.connect = function() {
 
+	var IPAddress = $('.YourAirplaneIP').val()
 	console.log('Trying to connect to ' + IPAddress)
+
+	if(IPAddress == "0"){
+		app.disconnect()
+	}
 
 	$('#startView').hide()
 	$('#connectingStatus').text('Connecting to ' + IPAddress)
 	$('#connectingView').show()
 
-	chrome.sockets.tcp.create(function(createInfo) {
+	chrome.sockets.create("tcp", null, function(createInfo) {
 
 		app.socketId = createInfo.socketId
 
