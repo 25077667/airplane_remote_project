@@ -30,11 +30,11 @@ app.connect = function() {
 	$('#connectingStatus').text('Connecting to ' + IPAddress)
 	$('#connectingView').show()
 
-	chrome.sockets.create("tcp", null, function(createInfo) {
+	chrome.socket.create("tcp", null, function(createInfo) {
 
 		app.socketId = createInfo.socketId
 
-		chrome.sockets.tcp.connect(
+		chrome.socket.tcp.connect(
 			app.socketId,
 			IPAddress,
 			app.PORT,
@@ -66,7 +66,7 @@ app.sendString = function(sendString) {
 
 	console.log('Trying to send:' + sendString)
 
-	chrome.sockets.tcp.send (
+	chrome.socket.tcp.send (
 		app.socketId,
 		app.stringToBuffer(sendString),
 		function(sendInfo) {
@@ -106,7 +106,7 @@ app.ledOff = function() {
 
 app.disconnect = function() {
 
-	chrome.sockets.tcp.close(app.socketId, function() {
+	chrome.socket.tcp.close(app.socketId, function() {
 		console.log('TCP Socket close finished.')
 	})
 
