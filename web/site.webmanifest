@@ -6,3 +6,10 @@
     }],
     "start_url": "/"
 }
+
+{"socket" : {
+      "tcp": {"connect": "",
+      "create":""
+      }
+  }
+}

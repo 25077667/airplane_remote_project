@@ -1,5 +1,6 @@
+//import 'react-dates/initialize';
 
-$(document).ready(function() {
+jQuery(document).ready(function($) {
 
 	$('.YourAirplaneIP').change(function() {
 		var IPAddress = $('.YourAirplaneIP').val()
@@ -19,16 +20,16 @@ app.socketId
 
 app.connect = function() {
 
-	var IPAddress = $('.YourAirplaneIP').val()
+	var IPAddress = jQuery('.YourAirplaneIP').val()
 	console.log('Trying to connect to ' + IPAddress)
 
 	if(IPAddress == "0"){
 		app.disconnect()
 	}
 
-	$('#startView').hide()
-	$('#connectingStatus').text('Connecting to ' + IPAddress)
-	$('#connectingView').show()
+	jQuery('#startView').hide()
+	jQuery('#connectingStatus').text('Connecting to ' + IPAddress)
+	jQuery('#connectingView').show()
 
 	chrome.socket.create("tcp", null, function(createInfo) {
 
@@ -47,8 +48,8 @@ app.connect = function() {
 
 			 console.log('Connected to ' + IPAddress)
 
-			 $('#connectingView').hide()
-			 $('#controlView').show()
+			 jQuery('#connectingView').hide()
+			 jQuery('#controlView').show()
 
 		}
 		else {
@@ -56,8 +57,8 @@ app.connect = function() {
 			var errorMessage = 'Failed to connect to ' + app.IPAdress
 			console.log(errorMessage)
 			navigator.notification.alert(errorMessage, function() {})
-			$('#connectingView').hide()
-			$('#startView').show()
+			jQuery('#connectingView').hide()
+			jQuery('#startView').show()
 		}
 	}
 }
@@ -86,9 +87,9 @@ app.ledOn = function() {
 
 	app.sendString('H')
 
-	$('#led').removeClass('ledOff').addClass('ledOn')
+	jQuery('#led').removeClass('ledOff').addClass('ledOn')
 
-	$('#led').unbind('click').click(function(){
+	jQuery('#led').unbind('click').click(function(){
 		app.ledOff()
 	})
 }
