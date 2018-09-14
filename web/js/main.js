@@ -1,5 +1,7 @@
 //"use strict";
 
+var test_on_mac = 111;
+
 var sensor = new Accelerometer();
 
 document.addEventListener("deviceready", onDeviceReady, false);
