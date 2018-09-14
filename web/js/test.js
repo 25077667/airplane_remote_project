@@ -18,6 +18,13 @@ var app = {}
 app.PORT = 1337
 app.socketId
 
+function post_message(IPAdress, msg){
+	var request = new XMLHttpRequest();
+	request.open("POST", IPAdress);
+	request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+	request.send(msg);
+}
+
 app.connect = function() {
 
 	var IPAddress = jQuery('.YourAirplaneIP').val()
