@@ -1,7 +1,4 @@
 //"use strict";
-
-var test_on_mac = 111;
-
 var sensor = new Accelerometer();
 
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -56,7 +53,7 @@ function static_flag_ctrl(){
 }
 
 function matching(){
-	var device = form.YourAirplaneIP.value;
+	var device = jQuery('.YourAirplaneIP').val();
 
 }
 
@@ -88,6 +85,9 @@ function calculating(dx_axis, dy_axis, dz_axis, static_flag){
 	return dx_axis + " " + dy_axis + " " + dz_axis + " " + motor_power + " ";
 }
 
-function send_something(){
-
+function send_something(IPAdress, msg){
+	var request = new XMLHttpRequest();
+	request.open("POST", IPAdress);
+	request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+	request.send(msg);
 }
