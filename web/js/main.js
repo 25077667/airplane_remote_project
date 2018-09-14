@@ -1,8 +1,27 @@
 //"use strict";
-var sensor = new Accelerometer();
-
 document.addEventListener("deviceready", onDeviceReady, false);
+//----------declare variables---------------
+var static_flag = false;
+var x_axis = 0, y_axis = 0, z_axis = 0;
+var sensor = new Accelerometer();
+var ip_change_record = "";
 
+
+//------------ buttons-----------------------
+function static_flag_ctrl(){
+	static_flag = true;
+}
+
+//誰給acceleration??
+function set_up(acceleration){
+	//加速度重設
+	x_axis = acceleration.x;
+	y_axis = acceleration.y;
+	z_axis = acceleration.z;
+
+}
+
+//--------------touching screen------------------------
 function about_touch(){
 	let accelerometer = null;
 	try {
@@ -24,39 +43,30 @@ function about_touch(){
     	} else if (error.name === 'ReferenceError') {
         	console.log('Sensor is not supported by the User Agent.');
     	} else {
-        	throw error;
+        	onError();
     	}
 	}
 }
 
-var static_flag = false;
-var x_axis = 0, y_axis = 0, z_axis = 0;
-
-function onDeviceReady(){
-	navigator.accelerometer.getCurrentAcceleration(set_up, onError);
-}
-
-//誰給acceleration??
-function set_up(acceleration){
-	//加速度重設
-	x_axis = acceleration.x;
-	y_axis = acceleration.y;
-	z_axis = acceleration.z;
-}
-
-function onError(){
-	alert('onError!');
-}
-
-function static_flag_ctrl(){
-	static_flag = true;
-}
-
+//----------------matchin and send_something -------------------
 function matching(){
-	var device = jQuery('.YourAirplaneIP').val();
 
+	var device = jQuery('.YourAirplaneIP').val();
+	console.log('trying to connect: ' + device);
+  ip_change_record = device;
+	var msg = "start"			//原本在考慮說，要怎麼去驗證使用者不是第三人，可是google後發現貌似不可能，所以改天再想
+	send_something(ip_change_record, msg);
 }
 
+function send_something(IPAdress, msg){
+	var request = new XMLHttpRequest();
+	console.log('Trying to send:' + msg + " to " + IPAdress);
+	request.open("POST", "http://"+IPAdress);
+	request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+	request.send(msg);
+}
+
+// ------------calculating-------------
 function calculating(dx_axis, dy_axis, dz_axis, static_flag){
 //static_flag 是true代表穩定模式有打開
 
@@ -85,9 +95,15 @@ function calculating(dx_axis, dy_axis, dz_axis, static_flag){
 	return dx_axis + " " + dy_axis + " " + dz_axis + " " + motor_power + " ";
 }
 
-function send_something(IPAdress, msg){
-	var request = new XMLHttpRequest();
-	request.open("POST", IPAdress);
-	request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
-	request.send(msg);
+function touchmove(){
+
+}
+//--------------eooro alert----------------
+
+function onDeviceReady(){
+	navigator.accelerometer.getCurrentAcceleration(set_up, onError);
+}
+
+function onError(){
+	alert('onError!');
 }

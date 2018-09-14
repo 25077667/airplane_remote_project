@@ -1,5 +1,4 @@
 //import 'react-dates/initialize';
-
 jQuery(document).ready(function($) {
 
 	$('.YourAirplaneIP').change(function() {
@@ -38,7 +37,7 @@ app.connect = function() {
 	jQuery('#connectingStatus').text('Connecting to ' + IPAddress)
 	jQuery('#connectingView').show()
 
-	chrome.socket.create("tcp", null, function(createInfo) {
+	/*chrome.socket.create("tcp", null, function(createInfo) {
 
 		app.socketId = createInfo.socketId
 
@@ -47,7 +46,7 @@ app.connect = function() {
 			IPAddress,
 			app.PORT,
 			connectedCallback)
-	})
+	})*/
 
 	function connectedCallback(result) {
 
