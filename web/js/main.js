@@ -1,24 +1,36 @@
 //"use strict";
+// some resource to read https://developer.mozilla.org/zh-TW/docs/Web/API/Touch_events
+
 document.addEventListener("deviceready", onDeviceReady, false);
 //----------declare variables---------------
 var static_flag = false;
 var x_axis = 0, y_axis = 0, z_axis = 0;
 var sensor = new Accelerometer();
 var ip_change_record = "";
-
+fullscreen();
+//set_up();
 
 //------------ buttons-----------------------
+
 function static_flag_ctrl(){
 	static_flag = true;
 }
 
 //誰給acceleration??
-function set_up(acceleration){
+function set_up(){
 	//加速度重設
+	var acceleration = new Accelerometer();
 	x_axis = acceleration.x;
 	y_axis = acceleration.y;
 	z_axis = acceleration.z;
+	about_touch();
+}
 
+function fullscreen(){
+	var canvas = document.getElementById("canvas");
+	canvas.width  = jQuery(window).width();
+	canvas.height = jQuery(window).height();
+	//不懂為啥document.body.clientWidth是null byte...
 }
 
 //--------------touching screen------------------------
@@ -58,6 +70,8 @@ function matching(){
 	send_something(ip_change_record, msg);
 }
 
+//need to set a slice of time to get the Accelerometer value
+
 function send_something(IPAdress, msg){
 	var request = new XMLHttpRequest();
 	console.log('Trying to send:' + msg + " to " + IPAdress);
@@ -67,14 +81,14 @@ function send_something(IPAdress, msg){
 }
 
 // ------------calculating-------------
-function calculating(dx_axis, dy_axis, dz_axis, static_flag){
+function calculating(x_axis, y_axis, z_axis, static_flag){
 //static_flag 是true代表穩定模式有打開
 
 	var motor_power = 0 ; //這是馬達推力的變數，100是滿格
 	if (!static_flag) {
-		dx_axis = acceleration.x - x_axis;
-		dy_axis = acceleration.y - y_axis;
-		dz_axis = acceleration.z - z_axis;
+		var dx_axis = acceleration.x - x_axis;
+		var dy_axis = acceleration.y - y_axis;
+		var dz_axis = acceleration.z - z_axis;
 		motor_power = touchmove(); //目前尚未宣告touchmove
 		//自己拿手機起來測試啦
 		//手機頭上揚是y軸增加
