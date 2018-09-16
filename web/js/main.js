@@ -19,6 +19,7 @@ function static_flag_ctrl(){
 //誰給acceleration??
 function set_up(){
 	//加速度重設
+	//Generic Sensor API
 	var acceleration = new Accelerometer();
 	x_axis = acceleration.x;
 	y_axis = acceleration.y;
@@ -28,9 +29,8 @@ function set_up(){
 
 function fullscreen(){
 	var canvas = document.getElementById("canvas");
-	canvas.width  = jQuery(window).width();
-	canvas.height = jQuery(window).height();
-	//不懂為啥document.body.clientWidth是null byte...
+	canvas.width  = jQuery(window).width()-2;
+	canvas.height = jQuery(window).height()-42;
 }
 
 //--------------touching screen------------------------
