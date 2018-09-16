@@ -44,6 +44,7 @@ var centorl_x = 0;
 var centorl_y = 0;
 var r = 0;
 function touchStart(event){
+	event.preventDefault();
 	var x = event.touches[0].clientX;
 	var y = event.touches[0].clientY;
 	console.log(x);
@@ -65,6 +66,7 @@ function touchEnd(event){
 }
 
 function touchMove(event){
+	event.preventDefault();
 	var x = event.touches[0].clientX;
 	var y = event.touches[0].clientY;
 	if ((x - centorl_x)**2 + (y - centorl_y)**2 > 2600 ){
