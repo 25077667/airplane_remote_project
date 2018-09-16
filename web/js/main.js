@@ -8,7 +8,7 @@ var x_axis = 0, y_axis = 0, z_axis = 0;
 var sensor = new Accelerometer();
 var ip_change_record = "";
 fullscreen();
-//set_up();
+set_up();
 
 //------------ buttons-----------------------
 
@@ -24,7 +24,8 @@ function set_up(){
 	x_axis = acceleration.x;
 	y_axis = acceleration.y;
 	z_axis = acceleration.z;
-	about_touch();
+	//about_touch();
+
 }
 
 function fullscreen(){
@@ -34,30 +35,48 @@ function fullscreen(){
 }
 
 //--------------touching screen------------------------
-function about_touch(){
-	let accelerometer = null;
-	try {
-    	accelerometer = new Accelerometer({ frequency: 10 });
-    	accelerometer.addEventListener('error', event => {
-        	// Handle runtime errors.
-        	if (event.error.name === 'NotAllowedError') {
-	            console.log('Permission to access sensor was denied.');
-    	    } else if (event.error.name === 'NotReadableError' ) {
-        	    console.log('Cannot connect to the sensor.');
-        	}
-    	});
-	    accelerometer.addEventListener('reading', () => reloadOnShake(accelerometer));
-    	accelerometer.start();
-		} catch (error) {
-    	// Handle construction errors.
-    	if (error.name === 'SecurityError') {
-        	console.log('Sensor construction was blocked by the Feature Policy.');
-    	} else if (error.name === 'ReferenceError') {
-        	console.log('Sensor is not supported by the User Agent.');
-    	} else {
-        	onError();
-    	}
+var el = document.getElementsByTagName("canvas")[0];
+el.addEventListener("touchstart", () => { touchStart(event) }, false);
+el.addEventListener("touchend", () => { touchEnd(event) }, false);
+el.addEventListener("touchmove", () => { touchMove(event) }, false);
+
+var centorl_x = 0;
+var centorl_y = 0;
+var r = 0;
+function touchStart(event){
+	var x = event.touches[0].clientX;
+	var y = event.touches[0].clientY;
+	console.log(x);
+	console.log(y);
+	var c=document.getElementById("canvas");
+	var ctx=c.getContext("2d");
+	ctx.beginPath();
+	ctx.arc(x,y,100,0,2*Math.PI);
+	ctx.stroke();
+	centorl_x = x; centorl_y =y;
+}
+
+function touchEnd(event){
+	console.log("tEND");
+	var c=document.getElementById("canvas");
+	const ctx=c.getContext("2d");
+	ctx.clearRect(0,0,c.width,c.height);
+	document.getElementById("spot").style.visibility = 'hidden';
+}
+
+function touchMove(event){
+	var x = event.touches[0].clientX;
+	var y = event.touches[0].clientY;
+	if ((x - centorl_x)**2 + (y - centorl_y)**2 > 2600 ){
+		r = 50;
 	}
+	else {
+		r = Math.sqrt((x - centorl_x)**2 + (y - centorl_y)**2);
+	}
+	console.log(r)
+	document.getElementById("spot").style.setProperty('--y', y+'px');
+	document.getElementById("spot").style.setProperty('--x', x+'px');
+	document.getElementById("spot").style.visibility = 'visible';
 }
 
 //----------------matchin and send_something -------------------
@@ -109,10 +128,9 @@ function calculating(x_axis, y_axis, z_axis, static_flag){
 	return dx_axis + " " + dy_axis + " " + dz_axis + " " + motor_power + " ";
 }
 
-function touchmove(){
 
-}
-//--------------eooro alert----------------
+
+//----------------eooro alert----------------
 
 function onDeviceReady(){
 	navigator.accelerometer.getCurrentAcceleration(set_up, onError);

@@ -20,6 +20,13 @@ select{
   background: #444444;
 }
 
+img{
+  visibility:hidden;
+  position:absolute;
+  top: var(--y);
+  left:var(--x);
+}
+
 Footer {
   position:fixed;
   bottom: 0px;
