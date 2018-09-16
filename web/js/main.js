@@ -1,5 +1,7 @@
 //"use strict";
 // some resource to read https://developer.mozilla.org/zh-TW/docs/Web/API/Touch_events
+// the Generic Sensor API only support on https so tou should make the raspi enable HTTPS server
+// https://variax.wordpress.com/2017/03/18/adding-https-to-the-raspberry-pi-apache-web-server/comment-page-1/
 
 document.addEventListener("deviceready", onDeviceReady, false);
 //----------declare variables---------------
@@ -24,7 +26,6 @@ function set_up(){
 	x_axis = acceleration.x;
 	y_axis = acceleration.y;
 	z_axis = acceleration.z;
-	//about_touch();
 
 }
 
@@ -130,9 +131,7 @@ function calculating(x_axis, y_axis, z_axis, static_flag){
 	return dx_axis + " " + dy_axis + " " + dz_axis + " " + motor_power + " ";
 }
 
-
-
-//----------------eooro alert----------------
+//----------------error alert----------------
 
 function onDeviceReady(){
 	navigator.accelerometer.getCurrentAcceleration(set_up, onError);
