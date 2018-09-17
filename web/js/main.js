@@ -76,6 +76,7 @@ function touchMove(event){
 	if ((x - centorl_x)**2 + (y - centorl_y)**2 > 2600 ){
 		r = 50;		//超出一定範圍禁止增長r
 	}
+	// 打算 在螢幕上找到是但半徑後，把半徑三次方在根據上下界分配百分比。
 	else {
 		r = Math.sqrt((x - centorl_x)**2 + (y - centorl_y)**2);
 	}
