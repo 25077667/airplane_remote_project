@@ -7,6 +7,7 @@ window.addEventListener("resize", fullscreen);
 var static_flag = false;
 var x_axis = 0, y_axis = 0, z_axis = 9.8;
 var ip_change_record = "";
+var matched = false;
 var acceleration = new Accelerometer({frequency: 60});
 set_up();
 
@@ -93,6 +94,8 @@ function matching(){
   ip_change_record = device;
 	var msg = "start"			//原本在考慮說，要怎麼去驗證使用者不是第三人，可是google後發現貌似不可能，所以改天再想
 	send_something(ip_change_record, msg);
+	matched = true;
+	start();
 }
 
 //need to set a slice of time to get the Accelerometer value
@@ -104,7 +107,10 @@ function send_something(IPAdress, msg){
 	request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
 	request.send(msg);
 }
-
+function start(){
+	if(matched == true)
+		setInterval(() => {	send_something(ip_change_record, calculating());},16);
+}
 // set a frequency function here and combine calculating() with send_something()
 
 // ------------calculating-------------
@@ -112,32 +118,40 @@ function calculating(){
 //static_flag 是true代表穩定模式有打開
 
 	var motor_power = 0 ; //這是馬達推力的變數，100是滿格
+	var dx_axis = acceleration.x - x_axis;
+	var dy_axis = acceleration.y - y_axis;
+	var dz_axis = acceleration.z - z_axis;
+	//自己拿手機起來測試啦
+	//手機頭上揚是y軸增加
+	//手機左翻是x軸增加
+	//當螢幕朝上，平放手機後，每旋轉90，270之同界角，z軸加速度都是0
+	//因為加速度是-9.8~9.8之間，我直接取三次方，就可以達到平衡點附近變動小的狀況
 	if (!static_flag) {
-		var dx_axis = acceleration.x - x_axis;
-		var dy_axis = acceleration.y - y_axis;
-		var dz_axis = acceleration.z - z_axis;
 		motor_power = r;
-		//自己拿手機起來測試啦
-		//手機頭上揚是y軸增加
-		//手機左翻是x軸增加
-		//當螢幕朝上，平放手機後，每旋轉90，270之同界角，z軸加速度都是0
-		//因為加速度是-9.8~9.8之間，我直接取三次方，就可以達到平衡點附近變動小的狀況
 		//因此max取1000，min取-1000，1000為完全直立
-
-		return Math.pow(dx_axis, 3) + " " + Math.pow(dy_axis, 3) + " " + Math.pow(dz_axis, 3) + " " + motor_power + " ";
 	}
-
 	else{
 		dx_axis = 0;
 		dy_axis = 0;
 		dz_axis = 0;
 		motor_power = 25;
 	}
-	return dx_axis + " " + dy_axis + " " + dz_axis + " " + motor_power + " ";
+
+	console.log(cal_d_axis(dx_axis) + " " + cal_d_axis(dy_axis) + " " + cal_d_axis(dz_axis) + " " + motor_power + " ");
+	return cal_d_axis(dx_axis) + " " + cal_d_axis(dy_axis) + " " + cal_d_axis(dz_axis) + " " + motor_power + " ";
 }
 
-var cal = calculating({frequency: 60})
-//cal.start();
+
+function cal_d_axis(d_axis){
+	if(d_axis > 2.5)
+		return d_axis**2;
+
+	else if ( d_axis > 2.5 && d_axis < 3.2)
+		return d_axis**2.5;
+
+	else
+		return d_axis**3;
+}
 //----------------error alert----------------
 
 function onError(){
