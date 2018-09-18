@@ -7,7 +7,7 @@ var static_flag = false;
 var x_axis = 0, y_axis = 0, z_axis = 9.8;
 var ip_change_record = "";
 var matched = false;
-var acceleration = new Accelerometer({frequency: 60});
+let acceleration = new Accelerometer({frequency: 60});
 set_up();
 
 //------------ buttons-----------------------
