@@ -1,4 +1,3 @@
-//"use strict";
 // some resource to read https://developer.mozilla.org/zh-TW/docs/Web/API/Touch_events
 // the Generic Sensor API only support on https so tou should make the raspi enable HTTPS server
 // https://variax.wordpress.com/2017/03/18/adding-https-to-the-raspberry-pi-apache-web-server/comment-page-1/
@@ -38,7 +37,6 @@ function fullscreen(){
 	canvas.height = jQuery(window).height() || document.documentElement.clientHeight;
 	console.log("screen resize");
 }
-
 //--------------touching screen------------------------
 var el = document.getElementsByTagName("canvas")[0];
 el.addEventListener("touchstart", () => { touchStart(event) }, false);
@@ -145,7 +143,6 @@ function calculating(){
 	return cal_d_axis(dx_axis) + " " + cal_d_axis(dy_axis) + " " + cal_d_axis(dz_axis) + " " + motor_power + " ";
 }
 
-
 function cal_d_axis(d_axis){
 	if(d_axis > 2.5)
 		return d_axis**2;
@@ -157,7 +154,6 @@ function cal_d_axis(d_axis){
 		return d_axis**3;
 }
 //----------------error alert----------------
-
 function onError(){
 	matched = false;
 	alert('disconnected');
