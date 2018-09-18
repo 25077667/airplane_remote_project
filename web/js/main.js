@@ -77,6 +77,7 @@ function touchMove(event){
 	if ((x - centorl_x)**2 + (y - centorl_y)**2 > 2600 ){
 		r = 50;		//超出一定範圍禁止增長r
 	}
+	// 打算 在螢幕上找到是但半徑後，把半徑三次方在根據上下界分配百分比。
 	else {
 		r = Math.sqrt((x - centorl_x)**2 + (y - centorl_y)**2);
 	}
@@ -103,7 +104,7 @@ function matching(){
 function send_something(IPAdress, msg){
 	var request = new XMLHttpRequest();		//在JS大權上面看到的做法，聚說是很老的API
 	console.log('Trying to send:' + msg + " to " + IPAdress);
-	request.open("POST", "https://"+IPAdress);		//https是因為Generic只能使用https
+	request.open("POST", "http://"+IPAdress);		//其實不是很懂，Generic Sensor API 要的HTTPS是跟Server要還是跟這的對象要
 	request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
 	request.send(msg);
 }
