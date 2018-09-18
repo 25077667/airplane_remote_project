@@ -96,6 +96,7 @@ function matching(){
 	var msg = "start"			//原本在考慮說，要怎麼去驗證使用者不是第三人，可是google後發現貌似不可能，所以改天再想
 	send_something(ip_change_record, msg);
 	matched = true;
+	//if(ip_change_record != "0")
 	start();
 }
 
@@ -109,8 +110,10 @@ function send_something(IPAdress, msg){
 	request.send(msg);
 }
 function start(){
-	if(matched == true)
+	if(matched == true && ip_change_record != "0")
 		setInterval(() => {	send_something(ip_change_record, calculating());},16);
+	else
+		onError();
 }
 // set a frequency function here and combine calculating() with send_something()
 
@@ -156,5 +159,7 @@ function cal_d_axis(d_axis){
 //----------------error alert----------------
 
 function onError(){
-	alert('onError!');
+	matched = false;
+	alert('disconnected');
+	location.reload();
 }
