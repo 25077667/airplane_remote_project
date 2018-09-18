@@ -34,8 +34,8 @@ function set_up(){
 
 function fullscreen(){
 	var canvas = document.getElementById("canvas");
-	canvas.width  = jQuery(window).width()-2;		//canvas本身就是一種畫板，希望給牠全螢幕，方便操作
-	canvas.height = jQuery(window).height()-42;
+	canvas.width  = jQuery(window).width() -2 || document.documentElement.clientWidth -2 ;		//canvas本身就是一種畫板，希望給牠全螢幕，方便操作
+	canvas.height = jQuery(window).height() || document.documentElement.clientHeight;
 	console.log("screen resize");
 }
 

@@ -8,3 +8,4 @@
 4. 後續程式碼將會補上
 5. 有些 library 如果需要另外 include 我注意到的話會提醒，沒有注意到的話就請見諒了
 6. 走過路過麻煩留下星星，歡迎大神幫忙發 pr
+7. 目前確定不支援Firefox (絕對不是我偷懶，而是firefox不支援Accelerometer這個API) about main.js line 11
