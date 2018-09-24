@@ -144,14 +144,11 @@ function calculating(){
 }
 
 function cal_d_axis(d_axis){
-	if(d_axis > 2.5)
-		return d_axis**2;
-
-	else if ( d_axis > 2.5 && d_axis < 3.2)
-		return d_axis**2.5;
+	if(d_axis < 0.4)
+		return 0;
 
 	else
-		return d_axis**3;
+		return d_axis;
 }
 //----------------error alert----------------
 function onError(){
