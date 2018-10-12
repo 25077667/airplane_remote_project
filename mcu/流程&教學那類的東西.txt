@@ -1,0 +1,23 @@
+如果喜歡看英文教學這邊，我有些資料從這來
+https://www.instructables.com/id/Getting-Started-With-ESP8266LiLon-NodeMCU-V3Flashi/
+他給的 Flasher master、 frimware 我也有附
+===
+反正在你使用板子之前，需要先幫板子寫上韌體
+怎麼做呢?
+1. 在Flasher master底下 \nodemcu-flasher-master.zip\nodemcu-flasher-master\Win[32或64]\Release\開啟那個ESP8266Flasher.exe
+2. 插上板子，Flasher master他會跑出你的板子是第幾 COM
+3. 點選上面config的標籤
+4. 選擇我附或網頁附的frimware
+5. 點選advenced標籤去選擇你的鮑率(我自己是9600)
+6. 回到operation標籤開始刷他
+7. 刷完之後，進度條是滿的(廢話)，左下角會有綠綠的打勾 :)
+
+===
+在arduino官方IDE上安裝nodeMCU的相關資訊
+在 /檔案/偏好設定/額外的開發板位置/ 那邊貼上 (去掉單引號)
+'http://arduino.esp8266.com/stable/package_esp8266com_index.json'
+然後點確定
+
+再到工具/開發板/開發板管理員/
+裡面搜尋esp8266 選擇ESP8266 Community安裝
+
