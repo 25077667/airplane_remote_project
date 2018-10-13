@@ -1,7 +1,8 @@
-// some resource to read https://developer.mozilla.org/zh-TW/docs/Web/API/Touch_events
+﻿// some resource to read https://developer.mozilla.org/zh-TW/docs/Web/API/Touch_events
 // the Generic Sensor API only support on https so tou should make the raspi enable HTTPS server
 // https://variax.wordpress.com/2017/03/18/adding-https-to-the-raspberry-pi-apache-web-server/comment-page-1/
 window.addEventListener("resize", fullscreen);
+
 //----------declare variables---------------
 var static_flag = false;
 var x_axis = 0, y_axis = 0, z_axis = 9.8;
