@@ -1,6 +1,6 @@
 ﻿<!doctype html>
 <html class="no-js" lang="">
-<meta http-equiv= "refresh" content= "0;url=https://ltjh.io/">
+
 <body bgcolor="#444444">
 <head>
   <meta charset="utf-8">
@@ -24,8 +24,7 @@
 <!--style 要弄個自動長寬-->
   <select class="YourAirplaneIP" onchange="matching()" style="width: 100%; height: 40px;">
       <option value = "0" type = "url">中斷連線</option>
-      <option value = "192.168.200.1" type = "url">192.168.200.1</option>
-      <option value="192.168.200.2" type = "url">192.168.200.2</option>
+      <option value = "192.168.200.2" type = "url">192.168.200.2</option>
       <option value="192.168.200.3" type = "url">192.168.200.3</option>
       <option value="192.168.200.4" type = "url">192.168.200.4</option>
       <option value="192.168.200.5" type = "url">192.168.200.5</option>
@@ -44,6 +43,7 @@
       <option value="192.168.200.18" type = "url">192.168.200.18</option>
       <option value="192.168.200.19" type = "url">192.168.200.19</option>
       <option value="192.168.200.20" type = "url">192.168.200.20</option>
+      <option value="192.168.200.21" type = "url">192.168.200.21</option>
     </select>
 
     <img src="img/spot.png" id="spot" alt="Smiley face" height="42" width="47">
@@ -54,7 +54,7 @@
 <!-- Footer -->
 
   <footer id="Footer">
-    <button class="btn default" onclick="static_flag_ctrl()">強制穩定</button>
+    <button class="btn default" onclick="static_flag_ctrl()"><b>強制穩定</b></button>
     <button class="btn set_up" onclick="set_up()"><b>初始設定</b></button>
   </footer>
 
@@ -93,5 +93,14 @@
 //
 //               佛祖保佑         永無bug
 //
+
+-->
+
+
+<!--
+README：
+the 192.168.200.1 has been used by this home control page.
+so the airplanes ip started at 192.168.200.2
+
 
 -->

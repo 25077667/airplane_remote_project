@@ -128,8 +128,18 @@ textarea {
   }
 
 .btn:hover {background: #eee;}
-.default{color: orange;}
-.set_up{color: red;}
+
+.default{
+  color: orange;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+.set_up{
+  color: red;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
 
 
 

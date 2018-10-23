@@ -56,7 +56,7 @@ function touchStart(event){
 	var c=document.getElementById("canvas");
 	var ctx=c.getContext("2d");
 	ctx.beginPath();
-	ctx.arc(centorl_x,centorl_y,100,0,2*Math.PI);
+	ctx.arc(centorl_x,centorl_y-50,200,0,2*Math.PI);
 	ctx.stroke();	//畫圓
 	static_flag = false;  //要記的關閉""強制穩定"
 }
@@ -73,14 +73,16 @@ function touchMove(event){
 	event.preventDefault();
 	var x = event.touches[0].clientX;
 	var y = event.touches[0].clientY;
-	if ((x - centorl_x)**2 + (y - centorl_y)**2 > 2600 ){
-		r = 50;		//超出一定範圍禁止增長r
+	if ((x - centorl_x)**2 + (y - centorl_y)**2 > 10000 ){
+		r = 100;		//超出一定範圍禁止增長r
 	}
 	// 打算 在螢幕上找到是但半徑後，把半徑三次方在根據上下界分配百分比。
 	else {
 		r = Math.sqrt((x - centorl_x)**2 + (y - centorl_y)**2);
 	}
 	console.log(r)
+	y-=15;
+	x-=15;
 	document.getElementById("spot").style.setProperty('--y', y+'px');  // 更改光點(圖片)屬姓，位置屬性是變數
 	document.getElementById("spot").style.setProperty('--x', x+'px');
 	document.getElementById("spot").style.visibility = 'visible';  //光點可見
