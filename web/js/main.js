@@ -81,8 +81,8 @@ function touchMove(event){
 		r = Math.sqrt((x - centorl_x)**2 + (y - centorl_y)**2);
 	}
 	console.log(r)
-	y-=15;
-	x-=15;
+	y-=10;
+	x-=20;
 	document.getElementById("spot").style.setProperty('--y', y+'px');  // 更改光點(圖片)屬姓，位置屬性是變數
 	document.getElementById("spot").style.setProperty('--x', x+'px');
 	document.getElementById("spot").style.visibility = 'visible';  //光點可見
