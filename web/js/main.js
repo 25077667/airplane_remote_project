@@ -49,14 +49,14 @@ var centorl_y = 0;
 var r = 0; //手指移動半徑
 function touchStart(event){
 	event.preventDefault();  //防止滾動
-	centorl_x = event.touches[0].clientX;
-	centorl_y = event.touches[0].clientY;
+	centorl_x = event.touches[0].clientX -20;	//修正偏移，因為如果不減，他會往右下的地方篇，而不是手指實際位置
+	centorl_y = event.touches[0].clientY -10;
 	console.log(centorl_x);
 	console.log(centorl_y);
 	var c=document.getElementById("canvas");
 	var ctx=c.getContext("2d");
 	ctx.beginPath();
-	ctx.arc(centorl_x,centorl_y-50,200,0,2*Math.PI);
+	ctx.arc(centorl_x+20,centorl_y-20,200,0,2*Math.PI);	//圓半徑200
 	ctx.stroke();	//畫圓
 	static_flag = false;  //要記的關閉""強制穩定"
 }
@@ -71,18 +71,15 @@ function touchEnd(event){
 
 function touchMove(event){
 	event.preventDefault();
-	var x = event.touches[0].clientX;
-	var y = event.touches[0].clientY;
-	if ((x - centorl_x)**2 + (y - centorl_y)**2 > 10000 ){
-		r = 100;		//超出一定範圍禁止增長r
+	var x = event.touches[0].clientX -20;	//修正偏移
+	var y = event.touches[0].clientY -10;
+	if (((x - centorl_x)*0.5)**2 + ((y - centorl_y)*0.5)**2 > 10000 ){
+		r = 100;		//超出一定範圍禁止增長r，圓最大半徑是200可是我要控制輸出在0~100，所以除以2
 	}
-	// 打算 在螢幕上找到是但半徑後，把半徑三次方在根據上下界分配百分比。
 	else {
-		r = Math.sqrt((x - centorl_x)**2 + (y - centorl_y)**2);
+		r = Math.sqrt(((x - centorl_x)*0.5)**2 + ((y - centorl_y)*0.5)**2);
 	}
 	console.log(r)
-	y-=10;
-	x-=20;
 	document.getElementById("spot").style.setProperty('--y', y+'px');  // 更改光點(圖片)屬姓，位置屬性是變數
 	document.getElementById("spot").style.setProperty('--x', x+'px');
 	document.getElementById("spot").style.visibility = 'visible';  //光點可見
@@ -139,7 +136,7 @@ function calculating(){
 		dx_axis = 0;
 		dy_axis = 0;
 		dz_axis = 0;
-		motor_power = 25;
+		motor_power = 50;
 	}
 
 	console.log(cal_d_axis(dx_axis) + " " + cal_d_axis(dy_axis) + " " + cal_d_axis(dz_axis) + " " + motor_power + " ");
