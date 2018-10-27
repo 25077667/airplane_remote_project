@@ -83,6 +83,7 @@ function touchMove(event){
 	document.getElementById("spot").style.setProperty('--y', y+'px');  // 更改光點(圖片)屬姓，位置屬性是變數
 	document.getElementById("spot").style.setProperty('--x', x+'px');
 	document.getElementById("spot").style.visibility = 'visible';  //光點可見
+
 }
 
 //----------------matchin and send_something -------------------
@@ -98,15 +99,14 @@ function matching(){
 	start();
 }
 
-//need to set a slice of time to get the Accelerometer value
-
 function send_something(IPAdress, msg){
-	var request = new XMLHttpRequest();		//在JS大權上面看到的做法，聚說是很老的API
+	var request = new XMLHttpRequest();		//在JS大全上面看到的做法，聚說是很老的API
 	console.log('Trying to send:' + msg + " to " + IPAdress);
-	request.open("POST", "http://"+IPAdress);		//其實不是很懂，Generic Sensor API 要的HTTPS是跟Server要還是跟這的對象要
+	request.open("POST", "http://"+IPAdress);
 	request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
 	request.send(msg);
 }
+
 function start(){
 	if(matched == true && ip_change_record != "0")
 		setInterval(() => {	send_something(ip_change_record, calculating());},16);
