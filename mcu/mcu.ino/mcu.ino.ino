@@ -8,26 +8,24 @@ const char* password = "********";
 const char* host = "data.sparkfun.com";
 const char* streamId   = "....................";
 const char* privateKey = "....................";
+byte packet_buffer[1000];   //receive package buffer that is receive window size
 
 void setup() {
   Serial.begin(115200);
   delay(10);
 
   // We start by connecting to a WiFi network
-
   Serial.println();
   Serial.println();
-  Serial.print("Connecting to ");
+  Serial.print("wifi Connecting to ");
   Serial.println(ssid);
 
-  /* Explicitly set the ESP8266 to be a WiFi-client, otherwise, it by default,
-     would try to act as both a client and an access-point and could cause
-     network-issues with your other WiFi-devices on your WiFi-network. */
+  // Explicitly set the ESP8266 to be a WiFi-client, otherwise, it by default, would try to act as both a client and an access-point and could cause network-issues with your other WiFi-devices on your WiFi-network.
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
 
   while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
+    delay(300);
     Serial.print(".");
   }
 
@@ -40,7 +38,10 @@ void setup() {
 int value = 0;
 
 void loop() {
-  delay(5000);
+  //delay(5000);
+
+  // if get start should initialize all equipment and verify user(pattern)
+
   ++value;
 
   Serial.print("connecting to ");
@@ -87,4 +88,3 @@ void loop() {
   Serial.println();
   Serial.println("closing connection");
 }
-
