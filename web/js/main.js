@@ -47,7 +47,7 @@ el.addEventListener("touchmove", () => { touchMove(event) }, false);
 
 var centorl_x = 0; //initial user touch point
 var centorl_y = 0;
-var r = 0; //user touch move radius
+var radius = 0; //user touch move radius
 function touchStart(event){
 	event.preventDefault();  //prevent the page roll
 	centorl_x = event.touches[0].clientX -20;	//fix the offset, without this code will identify to bottom right side rather then the true point
@@ -75,12 +75,12 @@ function touchMove(event){
 	var x = event.touches[0].clientX -20;	//fix the offset, without this code will identify to bottom right side rather then the true point
 	var y = event.touches[0].clientY -10;
 	if (((x - centorl_x)*0.5)**2 + ((y - centorl_y)*0.5)**2 > 10000 ){
-		r = 100;		//over the circle set it to be 100
+		radius = 100;		//over the circle set it to be 100
 	}
 	else {
-		r = Math.sqrt(((x - centorl_x)*0.5)**2 + ((y - centorl_y)*0.5)**2);	//because radius is 200, but i wnat to make the r value in [0,100], I divide it by 2
+		radius = Math.sqrt(((x - centorl_x)*0.5)**2 + ((y - centorl_y)*0.5)**2);	//because radius is 200, but i wnat to make the r value in [0,100], I divide it by 2
 	}
-	console.log(r)
+	console.log(radius)
 	document.getElementById("spot").style.setProperty('--y', y+'px');  // modify the spot attribute, the place (x,y) of spot is a variable更改光點(圖片)屬姓，位置屬性是變數
 	document.getElementById("spot").style.setProperty('--x', x+'px');
 	document.getElementById("spot").style.visibility = 'visible';  //make the spot viewable
@@ -90,9 +90,9 @@ function touchMove(event){
 //----------------matchin and send_something -------------------
 
 function MakePattern(){
-	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_*=|~@$";
+	var pattern_elements = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_*=|~@$";
 	for (var i=0;i<8;i++)
-		pattern += possible.charAt(Math.floor( Math.random() * possible.length));
+		pattern += pattern_elements.charAt(Math.floor( Math.random() * pattern_elements.length));
 	return pattern;
 }
 
@@ -101,7 +101,7 @@ function matching(){
 	console.log('trying to connect: ' + device);
   ip_change_record = device;
 	var msg = MakePattern();	//send the pattern and the first char '_' is the start signal
-	send_something(ip_change_record, msg);
+	send_something(ip_change_record, msg);	//first time is the pattern
 	matched = true;
 	//if(ip_change_record != "0")
 	start();
@@ -142,7 +142,7 @@ function calculating(){
 	//當螢幕朝上，平放手機後，每旋轉90，270之同界角，z軸加速度都是0
 
 	if (!static_flag) {
-		motor_power = r;
+		motor_power = radius;
 	}
 	else{
 		dx_axis = dy_axis = dz_axis = 0;
