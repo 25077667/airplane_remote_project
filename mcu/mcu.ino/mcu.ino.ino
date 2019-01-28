@@ -22,7 +22,7 @@ void handle_message(){
     }
 
     else if(data.length() == 5+8 ){
-      //form 00000:pattern
+      //form 0000000000:pattern
       String check_pattern;
       if(data[10]==':' && data[0].toInt()+data[1].toInt()+data[2].toInt() == 0)
         memcpy(check_pattern, &(data[11]), sizeof(char)*8 );
