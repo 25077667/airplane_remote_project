@@ -21,7 +21,7 @@ void handle_message(){
       memcpy(pattern,data,sizeof(data));  //this is the pattern of client,first time client in
     }
 
-    else if(data.length() == 5+8 ){
+    else if(data.length() == 11+8 ){
       //form 0000000000:pattern
       String check_pattern;
       if(data[10]==':' && data[0].toInt()+data[1].toInt()+data[2].toInt() == 0)
