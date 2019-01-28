@@ -110,9 +110,8 @@ function matching(){
 function send_something(IPAdress, msg){
 	var request = new XMLHttpRequest();		//saw this in the book(JavaScript: The Definitive Guide: Activate Your Web Pages, 6, David Flanagan ) it is said this is an old API
 	console.log('Trying to send:' + msg + " to " + IPAdress);
-	request.open("POST", "http://"+IPAdress);
-	request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
-	request.send(msg);
+	request.open("GET", "http://"+IPAdress+"/data/?msg="+msg);
+	request.send(null);
 }
 
 function start(){
@@ -149,15 +148,16 @@ function calculating(){
 		motor_power = 50;
 	}
 
-	console.log(cal_d_axis(dx_axis) + " " + cal_d_axis(dy_axis) + " " + cal_d_axis(dz_axis) + " " + motor_power + " " +pattern);
-	return cal_d_axis(dx_axis) + ":" + cal_d_axis(dy_axis) + ":" + cal_d_axis(dz_axis) + ":" + motor_power + ":"+ pattern;
+	console.log(cal_d_axis(dx_axis).toFixed(3) + " " + cal_d_axis(dy_axis).toFixed(3) + " " + cal_d_axis(dz_axis).toFixed(3) + " " + motor_power.toFixed(3) + " " +pattern);
+	return cal_d_axis(dx_axis).toFixed(3) + ":" + cal_d_axis(dy_axis).toFixed(3) + ":" + cal_d_axis(dz_axis).toFixed(3) + ":" + motor_power.toFixed(3) + ":"+ pattern;
+	// want to use XOR to encrypt a little message
 }
 
 //----------------error alert----------------
 function onError(){
 	matched = false;
 	alert('disconnected');
-	send_something(ip_change_recordm, "00000"+pattern);
+	send_something(ip_change_record, "0000000000:"+pattern);
 	location.replace('https://ltjh.io');
 	// why not i cannot reload this page
 }
