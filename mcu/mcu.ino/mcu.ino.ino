@@ -1,14 +1,84 @@
 //just for test the board!
 //the parameter is "NodeMCU 1.0(ESP-12E Module), 80MHz, Flash 4M(3MSPIFF), v2 Lower Memory, Disabled, None, Only sketch 115200"
 #include <ESP8266WiFi.h>
+#include <ESP8266WebServer.h>
 
 const char* ssid     = "********";
 const char* password = "********";
 
-const char* host = "data.sparkfun.com";
-const char* streamId   = "....................";
-const char* privateKey = "....................";
-byte packet_buffer[1000];   //receive package buffer that is receive window size
+String pattern;
+
+void actions(int dx, int dy, int dz, int motor){
+
+}
+
+void handle_message(){
+  if(server.hasArg("msg")){
+    String data = server.arg("msg");
+
+    if(data.length() == 8 && pattern.length()!=0){
+      //form pattern
+      memcpy(pattern,data,sizeof(data));  //this is the pattern of client,first time client in
+    }
+
+    else if(data.length() == 5+8 ){
+      //form 00000:pattern
+      String check_pattern;
+      if(data[10]==':' && data[0].toInt()+data[1].toInt()+data[2].toInt() == 0)
+        memcpy(check_pattern, &(data[11]), sizeof(char)*8 );
+      else
+        return;
+
+      if(check_pattern == pattern)
+        pattern = ""; //disconnect
+      else{
+        Serial.print("Data lost or be attacked.");
+        return;
+      }
+    }
+
+    else{
+      //form dx:dy:dz:motor:pattern
+      String check_pattern;
+      int pattern_index = sizeof(data)-8;
+      //will decrypt all msg
+      memcpy(check_pattern, &(data[pattern_index]), sizeof(char)*8 );
+      /*
+        check_pattern = check_pattern XOR with pattern
+      */
+      if(check_pattern != pattern)
+        return;
+
+      String raw_dx;
+      String raw_dy;
+      String raw_dz;
+      String raw_motor;
+      int index = 0;
+      while (data[index] != ':') {
+        raw_dx += data[index];
+        index ++;
+      }
+      index++;
+      while (data[index] != ':') {
+        raw_dy += data[index];
+        index ++;
+      }
+      index++;
+      while (data[index] != ':') {
+        raw_dz += data[index];
+        index ++;
+      }
+      index++;
+      while (data[index] != ':') {
+        raw_motor += data[index];
+        index ++;
+      }
+
+      actions(raw_dx.toInt(), raw_dy.toInt(), raw_dz.toInt(), raw_motor.toInt());
+    }
+
+  }
+}
 
 void setup() {
   Serial.begin(115200);
@@ -20,12 +90,10 @@ void setup() {
   Serial.print("wifi Connecting to ");
   Serial.println(ssid);
 
-  // Explicitly set the ESP8266 to be a WiFi-client, otherwise, it by default, would try to act as both a client and an access-point and could cause network-issues with your other WiFi-devices on your WiFi-network.
-  WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
 
   while (WiFi.status() != WL_CONNECTED) {
-    delay(300);
+    delay(200);
     Serial.print(".");
   }
 
@@ -33,56 +101,13 @@ void setup() {
   Serial.println("WiFi connected");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
+
+  server.on("/data/",HTTP_GET,handle_message);
+  server.begin();
+  Serial.print("server is on.");
+  println();
 }
 
-int value = 0;
-
 void loop() {
-  //delay(5000);
-
-  // if get start should initialize all equipment and verify user(pattern)
-
-  ++value;
-
-  Serial.print("connecting to ");
-  Serial.println(host);
-
-  // Use WiFiClient class to create TCP connections
-  WiFiClient client;
-  const int httpPort = 80;
-  if (!client.connect(host, httpPort)) {
-    Serial.println("connection failed");
-    return;
-  }
-
-  // We now create a URI for the request
-  String url = "/input/";
-  url += streamId;
-  url += "?private_key=";
-  url += privateKey;
-  url += "&value=";
-  url += value;
-
-  Serial.print("Requesting URL: ");
-  Serial.println(url);
-
-  // This will send the request to the server
-  client.print(String("GET ") + url + " HTTP/1.1\r\n" +
-               "Host: " + host + "\r\n" +
-               "Connection: close\r\n\r\n");
-  unsigned long timeout = millis();
-  while (client.available() == 0) {
-    if (millis() - timeout > 5000) {
-      Serial.println(">>> Client Timeout !");
-      client.stop();
-      return;
-    }
-  }
-
-  // Read all the lines of the reply from server and print them to Serial
-  while (client.available()) {
-    String line = client.readStringUntil('\r');
-    Serial.print(line);
-  }
-
+  server.handleClient();
 }
