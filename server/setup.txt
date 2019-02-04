@@ -1,0 +1,18 @@
+it needs to setup some config, under some different location 
+so i only list all software you should install
+and how to set up, i have google.
+
+//server
+nginx
+//create a user to handle this service, don't give it too high permission
+
+
+//wifi ap
+dnsmasq
+hostapd
+
+//https
+https://www.sslforfree.com/
+
+=================
+//ssl
