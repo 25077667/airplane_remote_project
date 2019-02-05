@@ -9,12 +9,15 @@ ESP8266WebServer server(80);
 String pattern;
 
 void actions(int dx, int dy, int dz, int motor){
-
+  Serial.print("Action!");
 }
 
 bool check_pattern(String data){
+  if(pattern == "")
+    return false;
+
   String copied;
-  copied = data.substring(data.length()-8, data.length()-1);
+  copied = data.substring(data.length()-8, data.length());
 
   bool is_same = true;
   int len = pattern.length();
@@ -30,14 +33,23 @@ void handle_message(){
   if(server.hasArg("msg")){
 
     String data = server.arg("msg");
+    Serial.println(pattern);
+    Serial.println("***");
     Serial.println(data);
 
-    if(pattern!="" && check_pattern(data)==false)
+    if(pattern!="" && check_pattern(data)==false){
+      server.send(403, "text/html", "permission denied");
       return;
+    }
 
     if(data.length() == 8){//set pattern
-      memcpy(&pattern,&data,sizeof(data));  //this is the pattern of client,first time client in
+      pattern = data;  //this is the pattern of client,first time client in
       Serial.print("set pattern as : ");Serial.println(pattern);
+    }
+
+    else if(pattern == ""){
+      server.send(403, "text/html", "Data lost or be attacked.");
+      return;
     }
 
     else if(data.length() == 11+8 ){ //disconnect, form 0000000000:pattern
@@ -53,16 +65,14 @@ void handle_message(){
       String raw_dy;
       String raw_dz;
       String raw_motor;
-      memcpy(&(raw_dx[0]), &(data[0]), sizeof(char)*6);
-      memcpy(&(raw_dy[0]), &(data[7]), sizeof(char)*6);
-      memcpy(&(raw_dz[0]), &(data[14]), sizeof(char)*6);
-      memcpy(&(raw_motor[0]), &(data[21]), sizeof(char)*6);
-
+      raw_dx = data.substring(0,6);
+      raw_dy = data.substring(7,13);
+      raw_dz = data.substring(14,20);
+      raw_motor = data.substring(21,27);
+      Serial.println(raw_dx+":"+raw_dy+":"+raw_dz+":"+raw_motor);
       actions(raw_dx.toInt(), raw_dy.toInt(), raw_dz.toInt(), raw_motor.toInt());
     }
-    else{
-      Serial.print("Data lost or be attacked.");
-    }
+
     server.send(200, "text/html", "Data received");
   }
 }

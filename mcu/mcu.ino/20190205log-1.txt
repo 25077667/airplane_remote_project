@@ -1,0 +1,56 @@
+....
+WiFi connected
+IP address: 
+192.168.43.158
+server is on.
+asdfghjk
+asdfghjk
+0000000000:asdfghjk
+Data lost or be attacked.
+Exception (3):
+epc1=0x4010010e epc2=0x00000000 epc3=0x00000000 excvaddr=0x40047361 depc=0x00000000
+
+ctx: cont 
+sp: 3ffffc30 end: 3fffffd0 offset: 01a0
+
+>>>stack>>>
+3ffffdd0:  3ffe88e0 00000000 3ffffe60 40206837  
+3ffffde0:  3fff0218 00000013 3ffffe60 3ffffe80  
+3ffffdf0:  00000010 3ffffe80 3ffffe80 4020650f  
+3ffffe00:  3ffe88e0 00000000 3ffffe80 4020655b  
+3ffffe10:  00000007 3ffe8304 7fffffff 3fff02bd  
+3ffffe20:  3ffe85d8 3fff02bc 3ffffe80 4020471c  
+3ffffe30:  3ffeebb4 0000b034 0000b034 4010020c  
+3ffffe40:  3ffeea48 3ffe88e0 3ffffe8c 401006dc  
+3ffffe50:  3ffe8890 3ffe88e0 3ffffe8c 402064cc  
+3ffffe60:  3ffe88e0 00000290 3ffeebd4 402064e8  
+3ffffe70:  00000001 3ffe88e0 3ffeebd4 40202722  
+3ffffe80:  00000000 00000000 00000000 66647361  
+3ffffe90:  6b6a6867 00000000 00000000 4020471c  
+3ffffea0:  00000010 3fffff00 3fffff00 4020650f  
+3ffffeb0:  3ffeebb4 000001e4 000001e4 3fff012c  
+3ffffec0:  0000001f 00000013 3fffff00 401006dc  
+3ffffed0:  00000001 00000001 3ffef9b4 402071d6  
+3ffffee0:  3ffef0c0 00000001 3ffef9b4 40204712  
+3ffffef0:  3ffef9b4 3ffeea98 3fffff20 4020474e  
+3fffff00:  00000000 00000000 00000000 402066bc  
+3fffff10:  3ffef9b4 3ffeea98 3ffeea54 402047d5  
+3fffff20:  3fff01c4 0000000f 00000006 00000000  
+3fffff30:  00000000 3fffff80 401064d4 000183b6  
+3fffff40:  3ffeea98 00000001 3ffe850c 40203b14  
+3fffff50:  00000001 00000000 40203ca4 0000000f  
+3fffff60:  00000000 3fff0154 3ffeea54 3ffeecac  
+3fffff70:  00000001 3ffeea7c 3ffeea54 402049cc  
+3fffff80:  40207568 00000000 00001388 402071cc  
+3fffff90:  00000000 3fff0154 00000000 feefeffe  
+3fffffa0:  3fffdad0 00000000 3ffeeca5 40202894  
+3fffffb0:  3fffdad0 00000000 3ffeeca5 4020701c  
+3fffffc0:  feefeffe feefeffe 3ffe850c 40100739  
+<<<stack<<<
+
+ ets Jan  8 2013,rst cause:2, boot mode:(1,6)
+
+
+ ets Jan  8 2013,rst cause:4, boot mode:(1,6)
+
+wdt reset

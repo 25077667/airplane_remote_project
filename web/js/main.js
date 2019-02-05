@@ -91,6 +91,7 @@ function touchMove(event){
 
 function MakePattern(){
 	var pattern_elements = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_*=|~@$";
+	pattern = "";
 	for (var i=0;i<8;i++)
 		pattern += pattern_elements.charAt(Math.floor( Math.random() * pattern_elements.length));
 	return pattern;
@@ -129,6 +130,13 @@ function cal_d_axis(d_axis){
 		return d_axis;
 }
 
+function paddingLeft(str){
+	if(str.length >= 6)
+		return str;
+	else
+		return paddingLeft("0" +str);
+}
+
 function calculating(){
 //if static_flag is true, that is "強制穩定" is on
 	var motor_power = 50 ; //motor power max is 100, but initial is 50
@@ -148,8 +156,7 @@ function calculating(){
 		motor_power = 50;
 	}
 
-	console.log(cal_d_axis(dx_axis).toFixed(3) + " " + cal_d_axis(dy_axis).toFixed(3) + " " + cal_d_axis(dz_axis).toFixed(3) + " " + motor_power.toFixed(3) + " " +pattern);
-	return cal_d_axis(dx_axis).toFixed(3) + ":" + cal_d_axis(dy_axis).toFixed(3) + ":" + cal_d_axis(dz_axis).toFixed(3) + ":" + motor_power.toFixed(3) + ":"+ pattern;
+	return paddingLeft((cal_d_axis(dx_axis).toFixed(3)).toString()) + ":" + paddingLeft((cal_d_axis(dy_axis).toFixed(3)).toString()) + ":" + paddingLeft((cal_d_axis(dz_axis).toFixed(3)).toString()) + ":" + paddingLeft((motor_power.toFixed(3)).toString()) + ":"+ pattern;
 	// want to use XOR to encrypt a little message
 }
 
