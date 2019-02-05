@@ -1,0 +1,345 @@
+1234
+
+Exception (28):
+epc1=0x40208b88 epc2=0x00000000 epc3=0x00000000 excvaddr=0x00000100 depc=0x00000000
+
+ctx: cont 
+sp: 3ffffc60 end: 3fffffd0 offset: 01a0
+
+>>>stack>>>
+3ffffe00:  3ffeffbc 00000004 3ffffebc 4020650f  
+3ffffe10:  3ffeeb94 0000017c 3ffffebc 402046d0  
+3ffffe20:  00000010 3ffffeb0 3ffffeb0 402064c3  
+3ffffe30:  3ffe88c4 00000000 3ffffeb0 4020650f  
+3ffffe40:  3ffe8b30 3ffe8870 3ffffeb0 40206541  
+3ffffe50:  00000001 3ffe8870 3ffffeb0 4020658e  
+3ffffe60:  3ffe88c4 00000212 3ffeea34 402069f2  
+3ffffe70:  00000001 3ffe8870 3ffe88c4 402025e3  
+3ffffe80:  00000000 00000000 00000000 3ffeeb94  
+3ffffe90:  00000010 00000010 00000000 402046d0  
+3ffffea0:  00000010 3fffff00 3fffff00 402064c3  
+3ffffeb0:  00000100 0098d32f 00000000 3ffeff5c  
+3ffffec0:  0000000f 00000004 3fffff00 401006dc  
+3ffffed0:  00000001 00000001 3ffef994 4020718a  
+3ffffee0:  00000000 3fffdad0 3ffef994 402046c6  
+3ffffef0:  3ffef994 3ffeea78 3fffff20 40204702  
+3fffff00:  00000000 00000000 00000000 40206670  
+3fffff10:  3ffef994 3ffeea78 3ffeea34 40204789  
+3fffff20:  3ffefd84 0000000f 00000006 00000000  
+3fffff30:  00000000 3ffeea34 401064d4 0000271f  
+3fffff40:  3ffeea78 00000001 3ffe850c 3ffeea5c  
+3fffff50:  00000001 00000000 40203c58 0000000f  
+3fffff60:  00000000 3ffeffd4 3ffeea34 3ffeec8c  
+3fffff70:  00000001 3ffeea5c 3ffeea34 40204980  
+3fffff80:  40207518 00000000 00001388 40207180  
+3fffff90:  00000000 3ffeffd4 00000000 feefeffe  
+3fffffa0:  3fffdad0 00000000 3ffeec85 40202848  
+3fffffb0:  3fffdad0 00000000 3ffeec85 40206fd0  
+3fffffc0:  feefeffe feefeffe 3ffe850c 40100739  
+<<<stack<<<
+
+ ets Jan  8 2013,rst cause:2, boot mode:(3,7)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+vbb28d4a3
+~ld
+
+
+wifi connecting to : Redmi Note 5
+....
+WiFi connected
+IP address: 
+192.168.43.158
+server is on.
+1234
+
+Exception (28):
+epc1=0x40208b88 epc2=0x00000000 epc3=0x00000000 excvaddr=0x00000100 depc=0x00000000
+
+ctx: cont 
+sp: 3ffffc60 end: 3fffffd0 offset: 01a0
+
+>>>stack>>>
+3ffffe00:  3ffefd24 00000004 3ffffebc 4020650f  
+3ffffe10:  3ffeeb94 000001af 3ffffebc 402046d0  
+3ffffe20:  00000010 3ffffeb0 3ffffeb0 402064c3  
+3ffffe30:  3ffe88c4 00000000 3ffffeb0 4020650f  
+3ffffe40:  3ffe8b30 3ffe8870 3ffffeb0 40206541  
+3ffffe50:  00000001 3ffe8870 3ffffeb0 4020658e  
+3ffffe60:  3ffe88c4 000001ee 3ffeea34 402069f2  
+3ffffe70:  00000001 3ffe8870 3ffe88c4 402025e3  
+3ffffe80:  00000000 00000000 00000000 3ffeeb94  
+3ffffe90:  00000010 00000010 00000000 402046d0  
+3ffffea0:  00000010 3fffff00 3fffff00 402064c3  
+3ffffeb0:  00000100 008c408a 00000000 3ffefa44  
+3ffffec0:  0000000f 00000004 3fffff00 401006dc  
+3ffffed0:  00000001 00000001 3ffef994 4020718a  
+3ffffee0:  40100739 00000000 3ffef994 402046c6  
+3ffffef0:  3ffef994 3ffeea78 3fffff20 40204702  
+3fffff00:  00000000 00000000 00000000 40206670  
+3fffff10:  3ffef994 3ffeea78 3ffeea34 40204789  
+3fffff20:  3ffefcf4 0000000f 00000006 00000000  
+3fffff30:  00000000 3ffeea34 401064d4 000023e7  
+3fffff40:  3ffeea78 00000001 3ffe850c 3ffeea5c  
+3fffff50:  00000001 00000000 40203c58 0000000f  
+3fffff60:  00000000 3ffefeb4 3ffeea34 3ffeec8c  
+3fffff70:  00000001 3ffeea5c 3ffeea34 40204980  
+3fffff80:  40207518 00000000 00001388 40207180  
+3fffff90:  00000000 3ffefeb4 00000000 feefeffe  
+3fffffa0:  3fffdad0 00000000 3ffeec85 40202848  
+3fffffb0:  3fffdad0 00000000 3ffeec85 40206fd0  
+3fffffc0:  feefeffe feefeffe 3ffe850c 40100739  
+<<<stack<<<
+
+ ets Jan  8 2013,rst cause:2, boot mode:(3,7)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+vbb28d4a3
+~ld
+
+
+wifi connecting to : Redmi Note 5
+...
+WiFi connected
+IP address: 
+192.168.43.158
+server is on.
+1234
+
+Exception (28):
+epc1=0x40208b88 epc2=0x00000000 epc3=0x00000000 excvaddr=0x00000100 depc=0x00000000
+
+ctx: cont 
+sp: 3ffffc60 end: 3fffffd0 offset: 01a0
+
+>>>stack>>>
+3ffffe00:  3ffefecc 00000004 3ffffebc 4020650f  
+3ffffe10:  3ffeeb94 000001ae 3ffffebc 402046d0  
+3ffffe20:  00000010 3ffffeb0 3ffffeb0 402064c3  
+3ffffe30:  3ffe88c4 00000000 3ffffeb0 4020650f  
+3ffffe40:  3ffe8b30 3ffe8870 3ffffeb0 40206541  
+3ffffe50:  00000001 3ffe8870 3ffffeb0 4020658e  
+3ffffe60:  3ffe88c4 000001ec 3ffeea34 402069f2  
+3ffffe70:  00000001 3ffe8870 3ffe88c4 402025e3  
+3ffffe80:  00000000 00000000 00000000 3ffeeb94  
+3ffffe90:  00000010 00000010 00000000 402046d0  
+3ffffea0:  00000010 3fffff00 3fffff00 402064c3  
+3ffffeb0:  00000100 003ff477 00000000 3ffefa74  
+3ffffec0:  0000000f 00000004 3fffff00 401006dc  
+3ffffed0:  00000001 00000001 3ffef994 4020718a  
+3ffffee0:  40206eff 40100734 3ffef994 402046c6  
+3ffffef0:  3ffef994 3ffeea78 3fffff20 40204702  
+3fffff00:  00000000 00000000 00000000 40206670  
+3fffff10:  3ffef994 3ffeea78 3ffeea34 40204789  
+3fffff20:  3ffefa44 0000000f 00000006 00000000  
+3fffff30:  00000000 3ffeea34 401064d4 0000105f  
+3fffff40:  3ffeea78 00000001 3ffeea38 40203ac8  
+3fffff50:  00000001 00000000 40203c58 0000000f  
+3fffff60:  00000000 3ffefa94 3ffeea34 3ffeec8c  
+3fffff70:  00000001 3ffeea5c 3ffeea34 40204980  
+3fffff80:  40207518 00000000 00001388 40207180  
+3fffff90:  00000000 3ffefa94 00000000 feefeffe  
+3fffffa0:  3fffdad0 00000000 3ffeec85 40202848  
+3fffffb0:  3fffdad0 00000000 3ffeec85 40206fd0  
+3fffffc0:  feefeffe feefeffe 3ffe850c 40100739  
+<<<stack<<<
+
+ ets Jan  8 2013,rst cause:2, boot mode:(3,7)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+vbb28d4a3
+~ld
+
+
+wifi connecting to : Redmi Note 5
+.
+WiFi connected
+IP address: 
+192.168.43.158
+server is on.
+djuvrxju
+
+Exception (3):
+epc1=0x4010010e epc2=0x00000000 epc3=0x00000000 excvaddr=0x40027871 depc=0x00000000
+
+ctx: cont 
+sp: 3ffffc30 end: 3fffffd0 offset: 01a0
+
+>>>stack>>>
+3ffffdd0:  3ffe88c4 00000000 3ffffe60 402067eb  
+3ffffde0:  3ffe88c4 00000000 3ffffe60 3ffeeb94  
+3ffffdf0:  00000010 00000010 00000000 40100575  
+3ffffe00:  3ffefd4c 00000008 3ffffebc 4020650f  
+3ffffe10:  3ffeeb94 0000020c 3ffffebc 402046d0  
+3ffffe20:  00000010 3ffffeb0 3ffffeb0 402064c3  
+3ffffe30:  3ffeeb94 000070da 000070da 4010020c  
+3ffffe40:  00000001 3ffe8870 3ffffeb0 401006dc  
+3ffffe50:  00000001 3ffe8870 3ffffeb0 40206480  
+3ffffe60:  3ffe88c4 0000024e 3ffe88c4 4020649c  
+3ffffe70:  00000001 3ffe8870 3ffe88c4 402026df  
+3ffffe80:  00000000 00000000 00000000 3ffeeb94  
+3ffffe90:  00000010 00000010 00000000 402046d0  
+3ffffea0:  00000010 3fffff00 3fffff00 402064c3  
+3ffffeb0:  756a7872 00000000 00000000 3ffefd24  
+3ffffec0:  0000000f 00000008 3fffff00 401006dc  
+3ffffed0:  00000001 00000001 3ffef994 4020718a  
+3ffffee0:  00000000 40100734 3ffef994 402046c6  
+3ffffef0:  3ffef994 3ffeea78 3fffff20 40204702  
+3fffff00:  00000000 00000000 00000000 40206670  
+3fffff10:  3ffef994 3ffeea78 3ffeea34 40204789  
+3fffff20:  3ffefcf4 0000000f 00000006 00000000  
+3fffff30:  00000000 3ffeea34 401064d4 00017f1a  
+3fffff40:  3ffeea78 00000001 3ffe850c 3ffeea5c  
+3fffff50:  00000001 00000000 40203c58 0000000f  
+3fffff60:  00000000 3fff01cc 3ffeea34 3ffeec8c  
+3fffff70:  00000001 3ffeea5c 3ffeea34 40204980  
+3fffff80:  40207518 00000000 00001388 40207180  
+3fffff90:  00000000 3fff01cc 00000000 feefeffe  
+3fffffa0:  3fffdad0 00000000 3ffeec85 40202848  
+3fffffb0:  3fffdad0 00000000 3ffeec85 40206fd0  
+3fffffc0:  feefeffe feefeffe 3ffe850c 40100739  
+<<<stack<<<
+
+ ets Jan  8 2013,rst cause:2, boot mode:(3,7)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+vbb28d4a3
+~ld
+
+
+wifi connecting to : Redmi Note 5
+...
+WiFi connected
+IP address: 
+192.168.43.158
+server is on.
+djuvrxju
+
+Exception (3):
+epc1=0x4010010e epc2=0x00000000 epc3=0x00000000 excvaddr=0x40027871 depc=0x00000000
+
+ctx: cont 
+sp: 3ffffc30 end: 3fffffd0 offset: 01a0
+
+>>>stack>>>
+3ffffdd0:  3ffe88c4 00000000 3ffffe60 402067eb  
+3ffffde0:  3ffe88c4 00000000 3ffffe60 3ffeeb94  
+3ffffdf0:  00000010 00000010 00000000 40100575  
+3ffffe00:  3ffefa74 00000008 3ffffebc 4020650f  
+3ffffe10:  3ffeeb94 0000020b 3ffffebc 402046d0  
+3ffffe20:  00000010 3ffffeb0 3ffffeb0 402064c3  
+3ffffe30:  3ffeeb94 000070da 000070da 4010020c  
+3ffffe40:  00000001 3ffe8870 3ffffeb0 401006dc  
+3ffffe50:  00000001 3ffe8870 3ffffeb0 40206480  
+3ffffe60:  3ffe88c4 0000024a 3ffe88c4 4020649c  
+3ffffe70:  00000001 3ffe8870 3ffe88c4 402026df  
+3ffffe80:  00000000 00000000 00000000 3ffeeb94  
+3ffffe90:  00000010 00000010 00000000 402046d0  
+3ffffea0:  00000010 3fffff00 3fffff00 402064c3  
+3ffffeb0:  756a7872 00000000 00000000 3ffefaa4  
+3ffffec0:  0000000f 00000008 3fffff00 401006dc  
+3ffffed0:  00000001 00000001 3ffef994 4020718a  
+3ffffee0:  00000000 3fffdad0 3ffef994 402046c6  
+3ffffef0:  3ffef994 3ffeea78 3fffff20 40204702  
+3fffff00:  00000000 00000000 00000000 40206670  
+3fffff10:  3ffef994 3ffeea78 3ffeea34 40204789  
+3fffff20:  3ffefa44 0000000f 00000006 00000000  
+3fffff30:  00000000 3ffeea34 401064d4 00002a99  
+3fffff40:  3ffeea78 00000001 3ffe850c 3ffeea5c  
+3fffff50:  00000001 00000000 40203c58 0000000f  
+3fffff60:  00000000 3ffefc4c 3ffeea34 3ffeec8c  
+3fffff70:  00000001 3ffeea5c 3ffeea34 40204980  
+3fffff80:  40207518 00000000 00001388 40207180  
+3fffff90:  00000000 3ffefc4c 00000000 feefeffe  
+3fffffa0:  3fffdad0 00000000 3ffeec85 40202848  
+3fffffb0:  3fffdad0 00000000 3ffeec85 40206fd0  
+3fffffc0:  feefeffe feefeffe 3ffe850c 40100739  
+<<<stack<<<
+
+ ets Jan  8 2013,rst cause:2, boot mode:(3,7)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+vbb28d4a3
+~ld
+
+
+wifi connecting to : Redmi Note 5
+...
+WiFi connected
+IP address: 
+192.168.43.158
+server is on.
+djuvrxju
+
+Exception (3):
+epc1=0x4010010e epc2=0x00000000 epc3=0x00000000 excvaddr=0x40027871 depc=0x00000000
+
+ctx: cont 
+sp: 3ffffc30 end: 3fffffd0 offset: 01a0
+
+>>>stack>>>
+3ffffdd0:  3ffe88c4 00000000 3ffffe60 402067eb  
+3ffffde0:  3ffe88c4 00000000 3ffffe60 3ffeeb94  
+3ffffdf0:  00000010 00000010 00000000 40100575  
+3ffffe00:  3ffefa74 00000008 3ffffebc 4020650f  
+3ffffe10:  3ffeeb94 0000020b 3ffffebc 402046d0  
+3ffffe20:  00000010 3ffffeb0 3ffffeb0 402064c3  
+3ffffe30:  3ffeeb94 000070da 000070da 4010020c  
+3ffffe40:  00000001 3ffe8870 3ffffeb0 401006dc  
+3ffffe50:  00000001 3ffe8870 3ffffeb0 40206480  
+3ffffe60:  3ffe88c4 0000024a 3ffe88c4 4020649c  
+3ffffe70:  00000001 3ffe8870 3ffe88c4 402026df  
+3ffffe80:  00000000 00000000 00000000 3ffeeb94  
+3ffffe90:  00000010 00000010 00000000 402046d0  
+3ffffea0:  00000010 3fffff00 3fffff00 402064c3  
+3ffffeb0:  756a7872 00000000 00000000 3ffefc64  
+3ffffec0:  0000000f 00000008 3fffff00 401006dc  
+3ffffed0:  00000001 00000001 3ffef994 4020718a  
+3ffffee0:  3fffdab0 00000000 3ffef994 402046c6  
+3ffffef0:  3ffef994 3ffeea78 3fffff20 40204702  
+3fffff00:  00000000 00000000 00000000 40206670  
+3fffff10:  3ffef994 3ffeea78 3ffeea34 40204789  
+3fffff20:  3ffefa44 0000000f 00000006 00000000  
+3fffff30:  00000000 3ffeea34 401064d4 0000842b  
+3fffff40:  3ffeea78 00000001 3ffeea38 40203ac8  
+3fffff50:  00000001 00000000 40203c58 0000000f  
+3fffff60:  00000000 3ffefd64 3ffeea34 3ffeec8c  
+3fffff70:  00000001 3ffeea5c 3ffeea34 40204980  
+3fffff80:  40207518 00000000 00001388 40207180  
+3fffff90:  00000000 3ffefd64 00000000 feefeffe  
+3fffffa0:  3fffdad0 00000000 3ffeec85 40202848  
+3fffffb0:  3fffdad0 00000000 3ffeec85 40206fd0  
+3fffffc0:  feefeffe feefeffe 3ffe850c 40100739  
+<<<stack<<<
+
+ ets Jan  8 2013,rst cause:2, boot mode:(3,7)
+
+load 0x4010f000, len 1384, room 16 
+tail 8
+chksum 0x2d
+csum 0x2d
+vbb28d4a3
+~ld
+
+
+wifi connecting to : Redmi Note 5
+...
+WiFi connected
+IP address: 
+192.168.43.158
+server is on.
