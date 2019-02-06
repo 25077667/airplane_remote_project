@@ -1,6 +1,6 @@
 research to improve performance
 ===
-::: reduce the wire delay :::
+::: reduce the wireless delay :::
 
 1. small cell
 2. divide channel
