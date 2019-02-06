@@ -1,8 +1,6 @@
 research to improve performance
 ===
-::: success
-reduce the wire delay
-:::
+::: reduce the wire delay :::
 
 1. small cell
 2. divide channel
