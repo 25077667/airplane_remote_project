@@ -10,6 +10,7 @@ var ip_change_record = "";
 var matched = false;
 let acceleration = new Accelerometer({frequency: 40});
 var pattern="_";
+var counting = -1;
 set_up();
 
 //------------ buttons-----------------------
@@ -111,8 +112,9 @@ function matching(){
 function send_something(IPAdress, msg){
 	var request = new XMLHttpRequest();		//saw this in the book(JavaScript: The Definitive Guide: Activate Your Web Pages, 6, David Flanagan ) it is said this is an old API
 	console.log('Trying to send:' + msg + " to " + IPAdress);
+	console.log(counting++);
 	request.open("GET", "http://"+IPAdress+"/data/?msg="+msg);
-	request.send(null);
+	request.send();
 }
 
 function start(){

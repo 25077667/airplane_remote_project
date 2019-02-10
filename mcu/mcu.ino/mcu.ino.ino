@@ -7,9 +7,12 @@ const char* ssid     = "********";
 const char* password = "********";
 ESP8266WebServer server(80);
 String pattern;
+int counting = 0;
 
 void actions(int dx, int dy, int dz, int motor){
   Serial.print("Action!");
+  Serial.println(counting);
+  counting++;
 }
 
 bool check_pattern(String data){
@@ -21,11 +24,8 @@ bool check_pattern(String data){
 
   bool is_same = true;
   int len = pattern.length();
-  while(len--)
-    if(pattern[len]!=copied[len]){
-      is_same = false;
-      break;
-    }//check every index of pattern
+  if(pattern != copied)
+    is_same = false;
   return is_same;
 }
 
@@ -33,10 +33,7 @@ void handle_message(){
   if(server.hasArg("msg")){
 
     String data = server.arg("msg");
-    Serial.println(pattern);
-    Serial.println("***");
-    Serial.println(data);
-
+    
     if(pattern!="" && check_pattern(data)==false){
       server.send(403, "text/html", "permission denied");
       return;
@@ -80,6 +77,7 @@ void handle_message(){
 void setup() {
   Serial.begin(115200);
   delay(10);
+  counting = 0;
 
   // We start by connecting to a WiFi network
   Serial.println();
