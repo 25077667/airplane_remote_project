@@ -23,7 +23,6 @@ bool check_pattern(String data){
   copied = data.substring(data.length()-8, data.length());
 
   bool is_same = true;
-  int len = pattern.length();
   if(pattern != copied)
     is_same = false;
   return is_same;
