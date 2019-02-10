@@ -10,7 +10,7 @@ var ip_change_record = "";
 var matched = false;
 let acceleration = new Accelerometer({frequency: 40});
 var pattern="_";
-var counting = -1;
+var counting = 0;
 set_up();
 
 //------------ buttons-----------------------
