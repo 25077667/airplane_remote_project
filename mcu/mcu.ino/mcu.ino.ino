@@ -12,6 +12,7 @@ int previous_data[4] = {0, 0, 0, 50};
 
 void actions(int dx, int dy, int dz, int motor)
 {
+  //if motor == 0, it is default speed; if motor > 0, it is add speed; if motor > 0, it is decrease speed;
   Serial.print("Action!");
   Serial.println(counting);
   counting++;
@@ -67,7 +68,7 @@ void handle_message()
       pattern = "";
     }
 
-    else if (data.length() == 36)
+    else if (data.length() == 40)
     {
       /*form dx:dy:dz:motor:pattern
         will decrypt all msg
