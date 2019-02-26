@@ -96,7 +96,7 @@ function matching() {
 	need_to_send = true;
 	ip_change_record = device;
 	var pattern = MakePattern();
-	send_something(ip_change_record, pattern +":0:0:0:0");	//first time is the pattern
+	send_something(ip_change_record, pattern + ":0:0:0:0");	//first time is the pattern
 	//while (send_something(ip_change_record, pattern+":0:0:0:0") != "Data received"){};
 	//this annotation can keep sending macthing until success
 	matched = true;
@@ -135,16 +135,14 @@ function cal_d_axis(d_axis) {
 
 function calculating(pattern) {
 	var motor_power = 50; //motor power max is 100, but initial is 50
-	var delta_x_init;	//acceleration.x - initial_accelerator.x;
-	var delta_y_init;
-	var delta_z_init;
-	var delta_x_reference = acceleration.x - reference_parameter.x;
-	var delta_y_reference = acceleration.y - reference_parameter.y;
-	var delta_z_reference = acceleration.z - reference_parameter.z;
-	var delta_radius_reference = radius - reference_parameter.radius;
+	var delta_init = { x: 0, y: 0, z: 0};
+	var delta_reference = { 
+		x: (acceleration.x - reference_parameter.x), 
+		y: (acceleration.y - reference_parameter.y), 
+		z: (acceleration.z - reference_parameter.z), 
+		radius: (radius - reference_parameter.radius) };
 
-
-	if (Math.abs(delta_x_reference) < 0.4 && Math.abs(delta_y_reference) < 0.4 && Math.abs(delta_z_reference) < 0.4 && delta_radius_reference < 4) {
+	if (Math.abs(delta_reference.x) < 0.4 && Math.abs(delta_reference.y) < 0.4 && Math.abs(delta_reference.z) < 0.4 && delta_radius_reference < 4) {
 		need_to_send = false;
 		return;
 	}
@@ -153,9 +151,9 @@ function calculating(pattern) {
 		reference_parameter.x = acceleration.x;
 		reference_parameter.y = acceleration.y;
 		reference_parameter.z = acceleration.z;
-		delta_x_init = acceleration.x - initial_accelerator.x;
-		delta_y_init = acceleration.y - initial_accelerator.y;
-		delta_z_init = acceleration.z - initial_accelerator.z;
+		delta_init.x = acceleration.x - initial_accelerator.x;
+		delta_init.y = acceleration.y - initial_accelerator.y;
+		delta_init.z = acceleration.z - initial_accelerator.z;
 		delta_radius_reference = radius;
 	}
 
@@ -166,9 +164,9 @@ function calculating(pattern) {
 	motor_power = radius;
 	radius = 0;
 	if (static_flag)
-		motor_power = delta_x_init = delta_y_init = delta_z_init = 0;
+		motor_power = delta_init.x = delta_init.y = delta_init.z = 0;
 
-	return pattern + ":" + (cal_d_axis(delta_x_init).toFixed(3)).toString() + ":" + (cal_d_axis(delta_y_init).toFixed(3)).toString() + ":" + (cal_d_axis(delta_z_init).toFixed(3)).toString() + ":" + (motor_power.toFixed(3)).toString();
+	return pattern + ":" + (cal_d_axis(delta_init.x).toFixed(3)).toString() + ":" + (cal_d_axis(delta_init.y).toFixed(3)).toString() + ":" + (cal_d_axis(delta_init.z).toFixed(3)).toString() + ":" + (motor_power.toFixed(3)).toString();
 	// want to use XOR to encrypt a little message
 }
 
@@ -177,7 +175,7 @@ function onError(pattern) {
 	matched = false;
 	//this annotation code can make sure it disconnected.
 	//while (send_something(ip_change_record, pattern+"d:0:0:0:0") != "Data received"){	};
-	send_something(ip_change_record, pattern+"d:0:0:0:0");
+	send_something(ip_change_record, pattern + "d:0:0:0:0");
 	alert('disconnected');
 	location.reload();
 }
