@@ -52,7 +52,7 @@ function touchStart(event) {
 	var c = document.getElementById("canvas");
 	var ctx = c.getContext("2d");
 	ctx.beginPath();
-	ctx.arc(central_point.x + 20, central_point.y - 20, 200, 0, 2 * Math.PI);	//radius is 200
+	ctx.arc(central_point.x + 20, central_point.y - 20, 200, 0, 2 * Math.PI);	//diameter is 200
 	ctx.stroke();	//draw a circle
 	static_flag = false;  //close "強制穩定"
 }
@@ -169,11 +169,10 @@ function calculating(pattern) {
 	//手機左翻是x軸增加
 	//當螢幕朝上，平放手機後，每旋轉90，270之同界角，z軸加速度都是0
 	//if static_flag is true, that is "強制穩定" is on
-	if (static_flag) 
-		motor_power = delta_x_init = delta_y_init = delta_z_init = 0;
-
 	motor_power = radius;
 	radius = 0;
+	if (static_flag)
+		motor_power = delta_x_init = delta_y_init = delta_z_init = 0;
 
 	return paddingLeft((cal_d_axis(delta_x_init).toFixed(3)).toString()) + ":" + paddingLeft((cal_d_axis(delta_y_init).toFixed(3)).toString()) + ":" + paddingLeft((cal_d_axis(delta_z_init).toFixed(3)).toString()) + ":" + paddingLeft((motor_power.toFixed(3)).toString()) + ":" + pattern;
 	// want to use XOR to encrypt a little message
