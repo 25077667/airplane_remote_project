@@ -5,7 +5,7 @@ window.addEventListener("resize", fullscreen);
 
 //----------declare variables---------------
 var static_flag = false;
-var reference_parameter = { x: 0, y: 0, z: 0, radius:0 };
+var reference_parameter = { x: 0, y: 0, z: 0, radius: 0 };
 var initial_accelerator = { x: 0, y: 0, z: 0 };
 var ip_change_record = "";
 var matched = false;
@@ -96,8 +96,8 @@ function matching() {
 	need_to_send = true;
 	ip_change_record = device;
 	var pattern = MakePattern();
-	send_something(ip_change_record, pattern);	//first time is the pattern
-	//while (send_something(ip_change_record, pattern) != "Data received"){};
+	send_something(ip_change_record, pattern +":0:0:0:0");	//first time is the pattern
+	//while (send_something(ip_change_record, pattern+":0:0:0:0") != "Data received"){};
 	//this annotation can keep sending macthing until success
 	matched = true;
 	start(pattern);
@@ -106,11 +106,12 @@ function matching() {
 function send_something(IPAdress, msg) {
 	if (need_to_send == false)
 		return;
-
+	var data = ["", "", "", "", ""];
+	data = msg.split(":");
 	var request = new XMLHttpRequest();		//saw this in the book(JavaScript: The Definitive Guide: Activate Your Web Pages, 6, David Flanagan ) it is said this is an old API
 	console.log('Trying to send:' + msg + " to " + IPAdress);
 	console.log(counting++);
-	request.open("GET", "http://" + IPAdress + "/data/?msg=" + msg);
+	request.open("GET", "http://" + IPAdress + "/data/?p=" + data[0] + "&x=" + data[1] + "&y=" + data[2] + "&z=" + data[3] + "&m=" + data[4]);
 	return request.send();
 }
 
@@ -130,13 +131,6 @@ function cal_d_axis(d_axis) {
 		return 0;
 	else
 		return d_axis;
-}
-
-function paddingLeft(str) {
-	if (str.length >= 7)
-		return str;
-	else
-		return paddingLeft(str + "0");
 }
 
 function calculating(pattern) {
@@ -174,7 +168,7 @@ function calculating(pattern) {
 	if (static_flag)
 		motor_power = delta_x_init = delta_y_init = delta_z_init = 0;
 
-	return paddingLeft((cal_d_axis(delta_x_init).toFixed(3)).toString()) + ":" + paddingLeft((cal_d_axis(delta_y_init).toFixed(3)).toString()) + ":" + paddingLeft((cal_d_axis(delta_z_init).toFixed(3)).toString()) + ":" + paddingLeft((motor_power.toFixed(3)).toString()) + ":" + pattern;
+	return pattern + ":" + (cal_d_axis(delta_x_init).toFixed(3)).toString() + ":" + (cal_d_axis(delta_y_init).toFixed(3)).toString() + ":" + (cal_d_axis(delta_z_init).toFixed(3)).toString() + ":" + (motor_power.toFixed(3)).toString();
 	// want to use XOR to encrypt a little message
 }
 
@@ -182,8 +176,8 @@ function calculating(pattern) {
 function onError(pattern) {
 	matched = false;
 	//this annotation code can make sure it disconnected.
-	//while (send_something(ip_change_record, "0000000000:" + pattern) != "Data received"){	};
-	send_something(ip_change_record, "0000000000:" + pattern);
+	//while (send_something(ip_change_record, pattern+"d:0:0:0:0") != "Data received"){	};
+	send_something(ip_change_record, pattern+"d:0:0:0:0");
 	alert('disconnected');
 	location.reload();
 }
