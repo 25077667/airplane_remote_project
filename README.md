@@ -17,6 +17,8 @@
 3. 如何自動讓裝置連到你的手機
 4. 可能會設計成不ack，只有在 error 或 return IP才會送資料回來
 5. nodeMCU 上的 action 還沒做
+6. 使用 matrix 去做加解密
+7. 如何防止 replay 攻擊？流水號？
 
 
 ======
